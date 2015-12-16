@@ -1,0 +1,11 @@
+filter{
+  json{
+    source => "message"
+    target => "<%= @target %>"
+<% if defined?(@fields) -%>
+<% @fields.each_pair do | key, value | -%>
+    add_field => [ "<%= key %>", "%{<%= value %>}" ]
+<% end -%>
+<% end -%>
+  }
+}
