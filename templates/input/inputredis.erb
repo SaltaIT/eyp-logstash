@@ -1,0 +1,9 @@
+input {
+  redis {
+    host      => "<%= @redishost %>"
+    port      => <%= @redisport %>,
+    data_type => "<%= @data_type %>"
+    key       => "<%= @key %>"
+    codec     => <%= @codec %>
+  }
+}
