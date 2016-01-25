@@ -5,9 +5,8 @@ Puppet::Type.type(:logstash_plugin).provide(:logstash_plugin) do
 
   def self.instances
     logstash_plugin(['list']).split("\n") do |package|
-      new(
-        :ensure => :present,
-        :name => package
+      new(:name => package,
+          :ensure => :present
         )
     end
   end
