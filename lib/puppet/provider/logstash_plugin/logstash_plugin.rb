@@ -12,10 +12,11 @@ Puppet::Type.type(:logstash_plugin).provide(:logstash_plugin) do
   end
 
   def self.prefetch(resources)
+    dbs=instances
     resources.keys.each do |name|
-      if provider = instances.find{ |instance| instance.name == name }
+      if provider = dbs.find{ |db| db.name == name }
         resources[name].provider = provider
-        debug "prefetch name:"+name+" instances.name:"+instance.name
+        debug "prefetch name:"+name+" instances.name:"+db.name
       end
     end
   end
