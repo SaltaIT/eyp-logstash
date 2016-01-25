@@ -1,5 +1,5 @@
 #
-class logstash inherits logstash::params {
+class logstash($version='1.5') inherits logstash::params {
 
   Exec {
     path => '/sbin:/bin:/usr/sbin:/usr/bin',
@@ -16,9 +16,9 @@ class logstash inherits logstash::params {
     require => $java_before,
   }
 
-  yumrepo { 'logstash-1.5':
-    baseurl  => 'http://packages.elasticsearch.org/logstash/1.5/centos',
-    descr    => 'logstash repository for 1.5.x packages',
+  yumrepo { "logstash-${version}":
+    baseurl  => "http://packages.elasticsearch.org/logstash/${version}/centos",
+    descr    => "logstash repository for ${version}.x packages",
     enabled  => '1',
     gpgcheck => '0',
     gpgkey   => 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch',
@@ -26,7 +26,7 @@ class logstash inherits logstash::params {
 
   package { 'logstash':
     ensure  => 'installed',
-    require => [ Yumrepo['logstash-1.5'], Exec['check java logstash'] ],
+    require => [ Yumrepo["logstash-${version}"], Exec['check java logstash'] ],
   }
 
   service { 'logstash':

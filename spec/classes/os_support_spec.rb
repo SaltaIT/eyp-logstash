@@ -3,7 +3,7 @@ describe 'logstash' do
 
   context 'CentOS 7' do
 
-    #let (:params) { {  } }
+    let (:params) { { 'version' => '1.5' } }
 
     let :facts do
     {
