@@ -49,10 +49,21 @@ describe 'logstash class' do
       it { should be_listening }
     end
 
-    # describe file("/etc/mysql/my.cnf") do
-    #   it { should be_file }
-    #   its(:content) { should match '[mysqld]' }
-    # end
+    describe file("/etc/logstash/conf.d/00_input_puppet-report.conf") do
+      it { should be_file }
+      its(:content) { should match 'puppet-report' }
+    end
+
+    describe file("/etc/logstash/conf.d/55_filter_puppet-report.conf") do
+      it { should be_file }
+      its(:content) { should match 'puppet-report' }
+      its(:content) { should match 'json' }
+    end
+
+    describe file("/etc/logstash/conf.d/99_output_out.conf") do
+      it { should be_file }
+      its(:content) { should match 'rubydebug' }
+    end
 
   end
 
