@@ -5,19 +5,17 @@ Puppet::Type.type(:logstash_plugin).provide(:logstash_plugin) do
 
   def self.instances
     logstash_plugin(['list']).split("\n") do |package|
-      # new(:name => package,
-      #     :ensure => :present
-      #   )
-      new(package)
+      new(:name => package,
+          :ensure => :present
+        )
     end
   end
 
   def self.prefetch(resources)
-    dbs=instances
     resources.keys.each do |name|
-      if provider = dbs.find{ |db| db.name == name }
+      if provider = instances.find{ |instance| instance.name == name }
         resources[name].provider = provider
-        debug "prefetch name:"+name+" instances.name:"+db.name
+        debug "prefetch name:"+name+" instances.name:"+instance.name
       end
     end
   end
