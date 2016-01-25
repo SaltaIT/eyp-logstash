@@ -4,20 +4,28 @@ Puppet::Type.type(:logstash_plugin).provide(:logstash_plugin) do
   commands :logstash_plugin => '/opt/logstash/bin/plugin'
 
   def self.instances
-    logstash_plugin(['list']).collect do |package|
-      new(
-        :ensure => :present,
-        :name => package
+    logstash_plugin(['list']).split("\n").collect do |package|
+      new(:name => package,
+          :ensure => :present
         )
     end
   end
 
+  # def self.prefetch(resources)
+  #   dbs=instances
+  #   resources.keys.each do |name|
+  #     if provider = dbs.find{ |db| db.name == name }
+  #       resources[name].provider = provider
+  #       debug "prefetch name:"+name+" instances.name:"+db.name
+  #     end
+  #   end
+  # end
+
   def self.prefetch(resources)
-    dbs=instances
-    resources.keys.each do |name|
-      if provider = dbs.find{ |db| db.name == name }
-        resources[name].provider = provider
-        debug "prefetch name:"+name+" instances.name:"+db.name
+    databases = instances
+    resources.keys.each do |database|
+      if provider = databases.find { |db| db.name == database }
+        resources[database].provider = provider
       end
     end
   end
