@@ -4,7 +4,7 @@ Puppet::Type.type(:logstash_plugin).provide(:logstash_plugin) do
   commands :logstash_plugin => '/opt/logstash/bin/plugin'
 
   def self.instances
-    logstash_plugin(['list']).collect do |package|
+    logstash_plugin(['list']).split("\n") do |package|
       new(
         :ensure => :present,
         :name => package
