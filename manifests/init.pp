@@ -10,6 +10,10 @@ class logstash($version='1.5') inherits logstash::params {
   {
     $java_before=Class['java']
   }
+  else
+  {
+    $java_before=undef
+  }
 
   exec { 'check java logstash':
     command => 'update-alternatives --display java',
