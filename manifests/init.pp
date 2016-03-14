@@ -43,9 +43,8 @@ class logstash($version='1.5') inherits logstash::params {
   {
     logrotate::logs { 'logstashLog':
       log           => '/var/log/logstash/logstash.log',
-      namelog       => 'logstashLog',
       ensure        => 'present',
-      rotate        => 7,
+      rotate        => '7',
       compress      => 'compress',
       delaycompress => 'delaycompress',
       notifempty    => 'notifempty',
@@ -57,9 +56,8 @@ class logstash($version='1.5') inherits logstash::params {
 
     logrotate::logs { 'logstashErr':
       log           => '/var/log/logstash/logstash.err',
-      namelog       => 'logstashErr',
       ensure        => 'present',
-      rotate        => 7,
+      rotate        => '7',
       compress      => 'compress',
       delaycompress => 'delaycompress',
       notifempty    => 'notifempty',
@@ -71,9 +69,8 @@ class logstash($version='1.5') inherits logstash::params {
 
     logrotate::logs { 'logstashStdout':
       log           => '/var/log/logstash/logstash.stdout',
-      namelog       => 'logstashStdout',
       ensure        => 'present',
-      rotate        => 7,
+      rotate        => '7',
       compress      => 'compress',
       delaycompress => 'delaycompress',
       notifempty    => 'notifempty',
