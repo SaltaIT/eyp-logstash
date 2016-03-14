@@ -42,8 +42,8 @@ class logstash($version='1.5') inherits logstash::params {
   if(defined(Class['logrotate']))
   {
     logrotate::logs { 'logstashLog':
+      ensure        => present,
       log           => '/var/log/logstash/logstash.log',
-      ensure        => 'present',
       rotate        => '7',
       compress      => true,
       delaycompress => true,
@@ -55,8 +55,8 @@ class logstash($version='1.5') inherits logstash::params {
     }
 
     logrotate::logs { 'logstashErr':
+      ensure        => present,
       log           => '/var/log/logstash/logstash.err',
-      ensure        => 'present',
       rotate        => '7',
       compress      => true,
       delaycompress => true,
@@ -68,8 +68,8 @@ class logstash($version='1.5') inherits logstash::params {
     }
 
     logrotate::logs { 'logstashStdout':
+      ensure        => present,
       log           => '/var/log/logstash/logstash.stdout',
-      ensure        => 'present',
       rotate        => '7',
       compress      => true,
       delaycompress => true,
