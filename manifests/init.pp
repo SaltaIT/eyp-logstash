@@ -41,10 +41,12 @@ class logstash($version='1.5') inherits logstash::params {
 
   if(defined(Class['logrotate']))
   {
-    logrotate::logs { 'logstashLog':
+    logrotate::logs { 'logstash':
       ensure        => present,
-      log           => '/var/log/logstash/logstash.log',
-      rotate        => '7',
+      log           => [ '/var/log/logstash/logstash.log',
+                          '/var/log/logstash/logstash.err',
+                          '/var/log/logstash/logstash.stdout' ],
+      rotate        => 7,
       compress      => true,
       delaycompress => true,
       notifempty    => true,
@@ -53,30 +55,5 @@ class logstash($version='1.5') inherits logstash::params {
       dateext       => false,
       copytruncate  => true,
     }
-
-    logrotate::logs { 'logstashErr':
-      ensure        => present,
-      log           => '/var/log/logstash/logstash.err',
-      rotate        => '7',
-      compress      => true,
-      delaycompress => true,
-      notifempty    => true,
-      frequency     => 'daily',
-      missingok     => true,
-      dateext       => false,
-      copytruncate  => true,
-    }
-
-    logrotate::logs { 'logstashStdout':
-      ensure        => present,
-      log           => '/var/log/logstash/logstash.stdout',
-      rotate        => '7',
-      compress      => true,
-      delaycompress => true,
-      notifempty    => true,
-      frequency     => 'daily',
-      missingok     => true,
-      dateext       => false,
-      copytruncate  => true,
-    }
+  }
 }
