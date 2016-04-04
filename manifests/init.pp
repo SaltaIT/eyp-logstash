@@ -55,5 +55,9 @@ class logstash($version='1.5') inherits logstash::params {
       dateext       => false,
       copytruncate  => true,
     }
+
+    file { '/etc/logrotate.d/logstash':
+      ensure => 'absent',
+    }
   }
 }
