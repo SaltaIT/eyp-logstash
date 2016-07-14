@@ -48,7 +48,7 @@ class logstash($version='1.5') inherits logstash::params {
                           '/var/log/logstash/logstash.stdout' ],
       rotate        => 7,
       compress      => true,
-      delaycompress => true,
+      delaycompress => false,
       notifempty    => true,
       frequency     => 'daily',
       missingok     => true,
