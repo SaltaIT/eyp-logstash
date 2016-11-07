@@ -5,9 +5,9 @@
 #     }
 # }
 define logstash::jsonfilter (
-                              $target=$name,
-                              $jsonfilter_name=$name,
-                              $fields = undef,
+                              $target          = $name,
+                              $jsonfilter_name = $name,
+                              $fields          = undef,
                             ) {
   file { "/etc/logstash/conf.d/55_filter_${jsonfilter_name}.conf":
     ensure  => 'present',

@@ -1,9 +1,9 @@
 define logstash::tcpinput (
-                            $type=$name,
-                            $port='5999',
-                            $codec=undef,
-                            $tcpinput_name=$name,
-                            $charset=undef,
+                            $type          = $name,
+                            $port          = '5999',
+                            $codec         = undef,
+                            $tcpinput_name = $name,
+                            $charset       = undef,
                           ) {
 
   # input {

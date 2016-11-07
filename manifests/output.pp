@@ -1,9 +1,9 @@
 define logstash::output (
-                          $outputname=$name,
-                          $elasticsearchhost=undef,
-                          $elasticsearchport='9200',
-                          $stdout_codec=undef,
-                          $index=undef,
+                          $outputname        = $name,
+                          $elasticsearchhost = undef,
+                          $elasticsearchport = '9200',
+                          $stdout_codec      = undef,
+                          $index             = undef,
                         ) {
 
   # output {

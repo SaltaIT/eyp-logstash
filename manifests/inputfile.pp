@@ -1,7 +1,7 @@
 define logstash::inputfile(
-                        $filename,
-                        $desc=$name,
-                      ) {
+                            $filename,
+                            $desc = $name,
+                          ) {
 
   file { "/etc/logstash/conf.d/00_input_file_${desc}.conf":
     ensure  => 'present',

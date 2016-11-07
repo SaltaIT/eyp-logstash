@@ -1,5 +1,7 @@
 #
-class logstash($version='1.5') inherits logstash::params {
+class logstash(
+                $version = '1.5'
+              ) inherits logstash::params {
 
   Exec {
     path => '/sbin:/bin:/usr/sbin:/usr/bin',

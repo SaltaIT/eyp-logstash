@@ -1,7 +1,7 @@
 define logstash::input(
-                        $type=$name,
-                        $input_name=$name,
-                        $properties=undef,
+                        $type       = $name,
+                        $input_name = $name,
+                        $properties = undef,
                       ) {
 
   if($properties)
