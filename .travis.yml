@@ -19,17 +19,7 @@ matrix:
     bundler_args:
     script: bundle exec rake validate
   - rvm: default
-    env: JOB=rspec
-    dist: trusty
-    bundler_args:
-    script: bundle exec rake spec
-  - rvm: default
     env: LINT=puppetcode
     dist: trusty
     bundler_args:
     script: bundle exec rake lint
-  - rvm: default
-    env: BEAKER_set="centos7-docker"
-    dist: trusty
-    bundler_args:
-    script: sudo service docker restart ; sleep 10 && bundle exec rspec spec/acceptance/*_spec.rb
