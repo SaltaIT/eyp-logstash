@@ -1,19 +1,42 @@
 {
   "name": "eyp-logstash",
-  "version": "0.1.36",
+  "version": "6.3.0",
   "author": "eyp",
-  "summary": "basic logstash configuration",
+  "summary": "logstash management",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/NTTCom-MS/eyp-logstash",
+  "project_page": "https://github.com/NTTCom-MS/eyp-logstash",
+  "issues_url": "https://github.com/NTTCom-MS/eyp-logstash/issues",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.12.0 < 9.9.9"},
+    {"name":"eyp/eyplib","version_requirement":">= 0.1.0 < 0.2.0"}
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [ "6", "7" ]
+      "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "OEL",
+      "operatingsystemrelease": [ "7" ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [ "7" ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.0"
     }
   ]
 }
