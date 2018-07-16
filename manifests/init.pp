@@ -7,4 +7,8 @@ class logstash(
                 $service_ensure        = 'running',
                 $service_enable        = true,
               ) inherits logstash::params {
+  class { '::logstash::install': }
+  -> class { '::logstash::config': }
+  ~> class { '::logstash::service': }
+  -> Class['::logstash']
 }
