@@ -1,6 +1,6 @@
 class { 'logstash': }
 
-logstash::input::tcp { 'tcp':
+logstash::input::tcp { 'tcp-1234':
   port => '1234',
 }
 
