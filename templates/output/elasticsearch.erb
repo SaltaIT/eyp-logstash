@@ -1,0 +1,7 @@
+  elasticsearch {
+    id => "<%= @id %>"
+    hosts => [ <%= @hosts.map{ |val| "\"#{val}\"" }.join(',') %> ]
+    <%- if defined?(@index) -%>
+    index => "<%= @index %>"
+    <%- end -%>
+    }

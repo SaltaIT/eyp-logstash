@@ -5,3 +5,4 @@
 * Added support for logstash 6.3
 * **INCOMPATIBLE CHANGE**:
   - Dropped support for older versions
+  - input/output/filter rework

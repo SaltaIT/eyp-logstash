@@ -1,0 +1,12 @@
+ tcp {
+   id => "<%= @id %>"
+   host => "<%= @host %>"
+   port => <%= @port %>
+   <%- if defined?(@codec) -%>
+     <%- if defined?(@charset) -%>
+   codec => <%= @codec %> { charset => "<%= @charset %>" }
+    <%- else -%>
+   codec => <%= @codec %>
+    <%- end -%>
+   <%- end -%>
+ }

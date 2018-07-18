@@ -1,9 +1,0 @@
-input {
-  <%= @type %> {
-<% if defined?(@properties) -%>
-<% @properties.each do |key, val| -%>
-    <%= key %> => <%= val %>
-<% end -%>
-<% end -%>
-  }
-}

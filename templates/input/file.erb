@@ -1,0 +1,4 @@
+  file {
+    id => "<%= @id %>"
+    path => [ <%= @paths.map{ |val| "\"#{val}\"" }.join(',') %> ]
+  }

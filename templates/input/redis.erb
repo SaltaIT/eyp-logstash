@@ -1,0 +1,11 @@
+  redis {
+    id => "<%= @id %>"
+    host      => "<%= @host %>"
+    port      => <%= @port %>
+    <%- if defined?(@data_type) -%>
+    data_type => "<%= @data_type %>"
+    <%- end -%>
+    <%- if defined?(@key) -%>
+    key       => "<%= @key %>"
+    <%- end -%>
+  }
