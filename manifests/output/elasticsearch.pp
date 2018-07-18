@@ -11,6 +11,7 @@ define logstash::output::elasticsearch(
       owner  => 'root',
       group  => 'root',
       mode   => '0644',
+      notify => Class['::logstash::service'],
     }
 
     concat::fragment{ 'logstash 99_output.conf header':

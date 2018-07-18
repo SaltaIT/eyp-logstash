@@ -11,6 +11,7 @@ define logstash::input::syslog(
       owner  => 'root',
       group  => 'root',
       mode   => '0644',
+      notify => Class['::logstash::service'],
     }
 
     concat::fragment{ 'logstash 00_input.conf header':
