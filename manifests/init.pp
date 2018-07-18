@@ -8,7 +8,6 @@ class logstash(
                 $service_enable        = true,
               ) inherits logstash::params {
 
-  // TODO: input de syslog
   class { '::logstash::install': }
   -> class { '::logstash::config': }
   ~> class { '::logstash::service': }
