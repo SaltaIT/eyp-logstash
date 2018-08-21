@@ -39,7 +39,7 @@ describe 'logstash class' do
     #   expect(shell("echo show databases | mysql | grep et2blog").exit_code).to be_zero
     # end
 
-    describe port(5959) do
+    describe port(1234) do
       it { should be_listening }
     end
 
