@@ -9,25 +9,19 @@ describe 'logstash class' do
 
       class { 'logstash': }
 
-      logstash_plugin { 'logstash-input-puppet_facter':
-        ensure => 'present',
+      logstash::input::tcp { 'tcp-1234':
+        port => '1234',
       }
 
-      logstash::tcpinput { 'puppet-report':
-        port => '5959',
+      logstash::input::syslog { 'syslog': }
+
+      logstash::input::redis { 'redis': }
+
+      logstash::input::file { 'files':
+        paths => [ '/var/log/messages', '/var/log/syslog' ],
       }
 
-      logstash::output { 'out':
-        elasticsearchhost => '127.0.0.1',
-        stdout_codec => 'rubydebug',
-      }
-
-      logstash::jsonfilter { 'puppet-report':
-        fields => {
-          'success' => '[puppet-report][metrics][events][success]',
-          'failure' => '[puppet-report][metrics][events][failure]'
-        }
-      }
+      logstash::output::elasticsearch { 'elasticsearch': }
 
       EOF
 
@@ -49,20 +43,17 @@ describe 'logstash class' do
       it { should be_listening }
     end
 
-    describe file("/etc/logstash/conf.d/00_input_puppet-report.conf") do
+    describe file("/etc/logstash/conf.d/00_input.conf") do
       it { should be_file }
-      its(:content) { should match 'puppet-report' }
+      its(:content) { should match 'tcp' }
+      its(:content) { should match 'syslog' }
+      its(:content) { should match 'redis' }
+      its(:content) { should match 'file' }
     end
 
-    describe file("/etc/logstash/conf.d/55_filter_puppet-report.conf") do
+    describe file("/etc/logstash/conf.d/99_output.conf") do
       it { should be_file }
-      its(:content) { should match 'puppet-report' }
-      its(:content) { should match 'json' }
-    end
-
-    describe file("/etc/logstash/conf.d/99_output_out.conf") do
-      it { should be_file }
-      its(:content) { should match 'rubydebug' }
+      its(:content) { should match 'elasticsearch' }
     end
 
   end
