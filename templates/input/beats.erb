@@ -1,0 +1,6 @@
+  beats {
+    id => "<%= @id %>"
+    <%- if defined?(@port) -%>
+    port => <%= @port %>
+    <%- end -%>
+  }
