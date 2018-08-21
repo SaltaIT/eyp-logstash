@@ -31,18 +31,6 @@ describe 'logstash class' do
 
     end
 
-    it "sleep 60 to make sure logstash is started" do
-      expect(shell("sleep 60").exit_code).to be_zero
-    end
-
-    # it "check db and mysql access" do
-    #   expect(shell("echo show databases | mysql | grep et2blog").exit_code).to be_zero
-    # end
-
-    describe port(1234) do
-      it { should be_listening }
-    end
-
     describe file("/etc/logstash/conf.d/00_input.conf") do
       it { should be_file }
       its(:content) { should match 'tcp' }
