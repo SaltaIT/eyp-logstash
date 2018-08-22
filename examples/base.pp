@@ -19,3 +19,7 @@ logstash::output::elasticsearch { 'elasticsearch': }
 logstash::customconf { 'demo':
   content => "# test\n",
 }
+
+logstash::customconf { 'demo2':
+  source => 'http://systemadmin.es'
+}
