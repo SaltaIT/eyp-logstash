@@ -21,5 +21,5 @@ logstash::customconf { 'demo':
 }
 
 logstash::customconf { 'demo2':
-  source => 'http://systemadmin.es'
+  source => 'https://raw.githubusercontent.com/jordiprats/eyp-logstash/master/examples/base.pp'
 }
