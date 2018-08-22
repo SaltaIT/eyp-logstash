@@ -6,7 +6,6 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with logstash](#setup)
     * [What logstash affects](#what-logstash-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with logstash](#beginning-with-logstash)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -15,9 +14,7 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+logstash management
 
 ## Module Description
 
@@ -38,18 +35,31 @@ management, etc.) this is the time to mention it.
 * This is a great place to stick any warnings.
 * Can be in list or paragraph form.
 
-### Setup Requirements **OPTIONAL**
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
-
 ### Beginning with logstash
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'logstash': }
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+logstash::input::tcp { 'tcp-1234':
+  port => '1234',
+}
+
+logstash::input::beats { 'beats': }
+
+logstash::input::syslog { 'syslog': }
+
+logstash::input::redis { 'redis': }
+
+logstash::input::file { 'files':
+  paths => [ '/var/log/messages', '/var/log/syslog' ],
+}
+
+logstash::output::elasticsearch { 'elasticsearch': }
+
+logstash::customconf { 'demo':
+  content => "# test\n",
+}
+```
 
 ## Usage
 
@@ -58,16 +68,23 @@ the fancy stuff with your module here.
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+### classes
+
+### resources
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+RHEL 7 and derivatives only
 
 ## Development
 
 We are pushing to have acceptance testing in place, so any new feature should
 have some test to check both presence and absence of any feature
+
+### Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request

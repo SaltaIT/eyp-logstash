@@ -4,6 +4,8 @@ logstash::input::tcp { 'tcp-1234':
   port => '1234',
 }
 
+logstash::input::beats { 'beats': }
+
 logstash::input::syslog { 'syslog': }
 
 logstash::input::redis { 'redis': }
