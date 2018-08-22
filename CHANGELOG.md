@@ -3,6 +3,7 @@
 ## 6.3.1
 
 * Added support for beats as a possible input
+* Added **logstash::customconf** to be able to load non supported configuration options
 
 ## 6.3.0
 

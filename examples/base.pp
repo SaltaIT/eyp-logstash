@@ -13,3 +13,7 @@ logstash::input::file { 'files':
 }
 
 logstash::output::elasticsearch { 'elasticsearch': }
+
+logstash::customconf { 'demo':
+  content => "# test\n",
+}
