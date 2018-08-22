@@ -18,22 +18,15 @@ logstash management
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module is intended for a ELK setup
 
 ## Setup
 
 ### What logstash affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* Package management
+* Input and output plugins
+* Service management
 
 ### Beginning with logstash
 
@@ -63,14 +56,36 @@ logstash::customconf { 'demo':
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+### Import a manually managed configuration file
+
+```puppet
+logstash::customconf { 'demo':
+  content => 
+}
+```
 
 ## Reference
 
 ### classes
 
+#### logstash
+
 ### resources
+
+#### logstash::input::tcp
+
+#### logstash::input::beats
+
+#### logstash::input::syslog
+
+#### logstash::input::redis
+
+#### logstash::input::file
+
+#### logstash::output::elasticsearch
+
+#### logstash::customconf
+
 
 ## Limitations
 

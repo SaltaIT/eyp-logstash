@@ -1,5 +1,6 @@
 define logstash::customconf (
-                              $content,
+                              $content  = undef,
+                              $source   = undef,
                               $ensure   = 'present',
                               $filename = $name,
                               $order    = '42',
@@ -11,5 +12,6 @@ define logstash::customconf (
     mode    => '0644',
     notify  => Class['::logstash::service'],
     content => $content,
+    source  => $source,
   }
 }
