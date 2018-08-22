@@ -66,9 +66,11 @@ logstash::customconf { 'demo2':
 
 #### Import a inline configuration files
 
+```puppet
 logstash::customconf { 'demo':
   content => "# test\n",
 }
+```
 
 ## Reference
 
