@@ -1,6 +1,6 @@
 define logstash::input::beats (
                                 $id    = $name,
-                                $port  = undef,
+                                $port  = '5044',
                                 $order = '42',
                               ) {
   if(!defined(Concat['/etc/logstash/conf.d/00_input.conf']))

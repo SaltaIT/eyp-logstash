@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 6.3.2
+
+* Set default port for beats to 5044
+
 ## 6.3.1
 
 * Added support for beats as a possible input
