@@ -27,7 +27,7 @@ define logstash::output::elasticsearch(
     concat::fragment{ 'logstash 99_output.conf end':
       target  => '/etc/logstash/conf.d/99_output.conf',
       order   => 'z99',
-      content => "\n}\n",
+      content => "}\n",
     }
   }
 
