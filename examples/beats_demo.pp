@@ -14,7 +14,7 @@ logstash::output::elasticsearch { 'elasticsearch2':
   order => '01',
   hosts => [ '2.2.2.2' ],
   index => 'filebeat-%{+YYYY.MM.dd}',
-  conditional_output_statement => 'else if'
+  conditional_output_statement => 'else if',
   conditional_output_field => 'filebeat',
   conditional_output_value => true,
 }
@@ -23,5 +23,5 @@ logstash::output::elasticsearch { 'elasticsearch2':
   order => '03',
   hosts => [ '3.3.3.3' ],
   index => 'other-%{+YYYY.MM.dd}',
-  conditional_output_statement => 'else'
+  conditional_output_statement => 'else',
 }
