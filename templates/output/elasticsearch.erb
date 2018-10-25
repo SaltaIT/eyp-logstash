@@ -22,8 +22,6 @@
     index => "<%= @index %>"
     <%- end -%>
     }
-  <%- if @conditional_output_statement == "else" -%>
-  }
-  <%- elsif defined?(@conditional_output_field) -%>
+  <%- if @conditional_output_statement == "else" or defined?(@conditional_output_field) -%>
   }
   <%- end -%>
