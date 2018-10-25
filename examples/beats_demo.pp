@@ -21,7 +21,7 @@ logstash::output::elasticsearch { 'elasticsearch2':
 
 logstash::output::elasticsearch { 'elasticsearch2':
   order => '03',
-  hosts => [ '2.2.2.2' ],
+  hosts => [ '3.3.3.3' ],
   index => 'other-%{+YYYY.MM.dd}',
   conditional_output_statement => 'else'
 }
