@@ -19,7 +19,7 @@ logstash::output::elasticsearch { 'elasticsearch2':
   conditional_output_value => true,
 }
 
-logstash::output::elasticsearch { 'elasticsearch2':
+logstash::output::elasticsearch { 'elasticsearch3':
   order => '03',
   hosts => [ '3.3.3.3' ],
   index => 'other-%{+YYYY.MM.dd}',
