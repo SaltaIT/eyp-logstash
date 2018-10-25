@@ -1,3 +1,20 @@
+  <%- case @conditional_output_statement
+      when "else" -%>
+  <%= @conditional_output_statement %> {
+  <%- else -%>
+  <%- if defined?(@conditional_output_field) -%>
+  <%- case @conditional_output_condition
+      when "=~" -%>
+  <%= @conditional_output_statement %> [<%= @conditional_output_field %>] <%= @conditional_output_condition %> <%= @conditional_output_value %> {
+  <%- when "in" -%>
+  <%= @conditional_output_statement %> [<%= @conditional_output_field %>] <%= @conditional_output_condition %> <%= @conditional_output_value %> {
+  <%- when "not in" -%>
+  <%= @conditional_output_statement %> [<%= @conditional_output_field %>] <%= @conditional_output_condition %> <%= @conditional_output_value %> {
+  <%- else -%>
+  <%= @conditional_output_statement %> [<%= @conditional_output_field %>] <%= @conditional_output_condition %> "<%= @conditional_output_value %>" {
+  <%- end -%>
+  <%- end -%>
+  <%- end -%>
   elasticsearch {
     id => "<%= @id %>"
     hosts => [ <%= @hosts.map{ |val| "\"#{val}\"" }.join(',') %> ]
@@ -5,3 +22,6 @@
     index => "<%= @index %>"
     <%- end -%>
     }
+  <%- if defined?(@conditional_output_field) -%>
+  }
+  <%- end -%>
