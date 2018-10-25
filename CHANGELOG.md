@@ -3,6 +3,7 @@
 ## 6.3.2
 
 * Set default port for beats to 5044
+* conditional output for elasticsearch
 
 ## 6.3.1
 
