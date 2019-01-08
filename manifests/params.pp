@@ -11,7 +11,7 @@ class logstash::params {
       {
         /^7.*$/:
         {
-          $package_url='https://artifacts.elastic.co/downloads/logstash/logstash-6.3.1.rpm'
+          $package_url='https://artifacts.elastic.co/downloads/logstash/logstash-6.5.4.rpm'
           $package_provider = 'rpm'
           $postinstall_action = '/usr/share/logstash/bin/system-install /etc/logstash/startup.options systemd'
           $postinstall_creates = '/etc/systemd/system/logstash.service'

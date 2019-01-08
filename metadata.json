@@ -1,6 +1,6 @@
 {
   "name": "eyp-logstash",
-  "version": "6.3.2",
+  "version": "6.5.0",
   "author": "eyp",
   "summary": "logstash management",
   "license": "Apache-2.0",

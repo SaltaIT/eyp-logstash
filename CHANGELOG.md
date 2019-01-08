@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 6.5.0
+
+* Supported version: 6.5
+
 ## 6.3.2
 
 * Set default port for beats to 5044
